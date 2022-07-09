@@ -1,6 +1,6 @@
 services:
   haproxy:
-    image: haproxy-with-minica/haproxy
+    image: graph-subscriber/haproxy
     build:
       context: ./haproxy
     ports:
@@ -15,11 +15,11 @@ services:
         protocol: tcp
         mode: host
     depends_on:
-      - sample
-  sample:
-    image: haproxy-with-minica/sample
+      - react
+  react:
+    image: graph-subscriber/react
     build:
-      context: ./sample/.devcontainer
+      context: ./react/.devcontainer
       args:
         - VARIANT=16-bullseye
     volumes:
